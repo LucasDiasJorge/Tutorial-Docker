@@ -6,16 +6,13 @@ Para este tutorial, vamos precisar de: o Docker instalado na sua máquina, e um 
 
 Instalação:
 
-<pre><code>
-    sudo apt install docker # Ubuntu
-    sudo dnf install docker # Fedora
+<pre><code>sudo apt install docker # Ubuntu
+sudo dnf install docker # Fedora
 </code></pre>
 
 Verifique o status do serviço do docker:
 
-<pre><code>
-    sudo systemctl status docker
-</code></pre>
+<pre><code>sudo systemctl status docker</code></pre>
 
 O output deve ser algo como:
 
