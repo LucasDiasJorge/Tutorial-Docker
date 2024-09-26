@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile-app
+    image: app-image:latest  # Nome da imagem
+    container_name: ubuntu_java_nginx
+    networks:
+      - backend
+    ports:
+      - "80:80"      # Porta do Nginx
+      - "8777:8777"  # Porta da aplicação Java (ajuste conforme necessário)
+    depends_on:
+      - postgres # Depende do serviço de DB
+  
+  postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile-postgres
+    image: db-image:latest  # Nome da imagem
+    container_name: postgres_db
+    networks:
+      - backend
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "54320:5432"  # Porta do PostgreSQL
+
+networks:
+  backend:
+
+volumes:
+  postgres_data:
