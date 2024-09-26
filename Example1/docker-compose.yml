@@ -2,6 +2,11 @@ version: '3.8'
 
 services:
   app:
+    mem_limit: 512m
+    mem_reservation: 128M
+    memswap_limit: 1g
+    cpus: "0.5"
+    cpuset: "1"
     build:
       context: .
       dockerfile: Dockerfile-app
@@ -16,6 +21,11 @@ services:
       - postgres # Depende do serviço de DB
   
   postgres:
+    mem_limit: 512m
+    mem_reservation: 128M
+    memswap_limit: 1g
+    cpus: "0.5"
+    cpuset: "1"
     build:
       context: .
       dockerfile: Dockerfile-postgres
