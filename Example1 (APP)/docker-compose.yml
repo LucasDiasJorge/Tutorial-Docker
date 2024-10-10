@@ -20,6 +20,7 @@ services:
       - "8777:8777"  # Porta da aplicação Java (ajuste conforme necessário)
     depends_on:
       - postgres # Depende do serviço de DB
+    restart: always  # Reinicia automaticamente se o serviço cair
   
   postgres:
     mem_limit: 512m
@@ -38,6 +39,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "54320:5432"  # Porta do PostgreSQL
+    restart: on-failure  # Reinicia apenas em caso de falha
 
 networks:
   backend:
